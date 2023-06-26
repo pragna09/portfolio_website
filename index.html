@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<head>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        box-sizing: border-box;
+      }
+      nav {
+        text-align: center;
+      }
+      .menu {
+        display: inline-block;
+      }
+      .menu>li {
+        float: left;
+        color: white;
+        width: 140px;
+        height: 40px;
+        line-height: 40px;
+        background: rgba(0, 0, 0, 0.7);
+        cursor: pointer;
+        font-size: 17px;
+      }
+      .sub-menu {
+        transform: scale(0);
+        transform-origin: top center;
+        transition: all 300ms ease-in-out;
+      }
+      .sub-menu li {
+        font-size: 14px;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 8px 0;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transform: scale(0);
+        transform-origin: top center;
+        transition: all 300ms ease-in-out;
+      }
+      .sub-menu li:last-child {
+        border-bottom: 0;
+      }
+      .sub-menu li:hover {
+        background: black;
+      }
+      .menu>li:hover .sub-menu li {
+        transform: scale(1);
+      }
+      .menu>li:hover .sub-menu {
+        transform: scale(1);
+      }
+    </style>
+  </head>
+<title>Portfolio</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script src="https://www.w3schools.com/lib/w3.js"></script>
+<body>
+<style>
+body {
+  background-image: url('data:image/jpeg;base64,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');
+}
+</style>
+<!-- Start Content -->
+<div id="home" class="w3-content">
+<!-- Navigation (Stays on Top) -->
+<nav>
+      <ul class="menu">
+        <li>
+          Skills
+          <ul class="sub-menu">
+            <li>C</li>
+            <li>C++</li>
+            <li>HTML</li>
+          </ul>
+        </li>
+        <li>
+          Certificate
+          <ul class="sub-menu">
+            <li>Cloud computing</li>
+            <li>Introduction to java</li>
+          </ul>
+        </li>
+        <li>
+          Education
+          <ul class="sub-menu">
+            <li>CMR Engineering College</li>
+            <li>Sri Chaitanya</li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+<!-- Image -->
+<img src="https://quotesbook.com/quotes/inspirational-quotes/unknown-authors/make-things-happen-2560x1440-3126.jpg" alt="Mine" style="width:100%">
+
+
+<!-- About -->
+<div id="home" class="w3-container w3-padding-32">
+<h1 class="w3-center" style="color:white;">About Me</h1>
+<img src="https://media.licdn.com/dms/image/D5603AQE6UQy9N-FgPw/profile-displayphoto-shrink_800_800/0/1678551504360?e=2147483647&v=beta&t=aTJxrNVZiYyAZLdpv6mdrAyuxutHGx51jIgi62GUwDM" style="height:150px; border-radius: 50%; border: 10px solid #FFD700;" alt="My photo.">
+<p style="color:white;">
+Hello,I'm Pragna Sree,a passionate computer science student specializing in artificial intelligence at CMR Engineering College.Currently in my second year, I am thrilled to be pursuing my academic journey in this exciting field. I have a strong interest in exploring the creative aspects of technology.Additionally, I am eager to delve into the world of graphic design, as I believe it will complement my technical skills and enable me to express my creativity in visually compelling ways.</p>
+</div>
+
+<div id="contact" class="w3-container w3-center w3-padding-32">
+<h2 class="w3-wide" style="color:white;">Say Hello!</h2>
+<p style="color:white;">
+Hyderabad, India<br>
+Phone: +91 8500807504<br>
+Email: koripuripragnasree@mail.com<br>
+</p>
+<form action="/action_page.php" target="_blank">
+<input class="w3-input" type="text" placeholder="Name" required name="Name">
+<input class="w3-input" type="text" placeholder="Email" required name="Email">
+<input class="w3-input" type="text" placeholder="Message" required name="Message">
+<br>
+<button class="w3-button w3-white" type="submit">SEND</button>
+</form>
+</div>
+ <div class="social-icons">
+                <a href="https://www.linkedin.com/in/pragna-sree-koripuri-b156a225b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/pragna09" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/pragna_409/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+</body>
+
+</html>
