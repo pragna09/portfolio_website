@@ -1,761 +1,361 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pragna Sree Koripuri - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --primary: #ff9a9e;
-            --secondary: #fad0c4;
-            --accent: #fbc2eb;
-            --dark: #5a3e36;
-            --light: #fff5f5;
-            --text: #4a3933;
-        }
-        
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.6;
-            color: var(--text);
-            overflow-x: hidden;
-            background: var(--light);
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 245, 245, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            box-shadow: 0 2px 20px rgba(255, 154, 158, 0.2);
-            border-bottom: 2px solid var(--primary);
-        }
-        
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-decoration: none;
-            font-family: 'Georgia', serif;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-            font-family: 'Georgia', serif;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 50%, #ff9a9e 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--dark);
-            position: relative;
-            overflow: hidden;
-            padding: 6rem 2rem 4rem;
-        }
-        
-        .hero::before {
-            content: '🌸 ✨ 🦋 🌿 🌼 ☁️';
-            position: absolute;
-            width: 200%;
-            font-size: 3rem;
-            opacity: 0.2;
-            animation: floatElements 30s linear infinite;
-            white-space: nowrap;
-        }
-        
-        @keyframes floatElements {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            padding: 3rem;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 60px rgba(255, 154, 158, 0.3);
-        }
-        
-        .name-display {
-            font-size: 4rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-            font-family: 'Georgia', serif;
-            letter-spacing: 2px;
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--dark);
-            animation: fadeInUp 1s ease 0.2s both;
-            font-family: 'Georgia', serif;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-        
-        .btn {
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            font-family: 'Georgia', serif;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 154, 158, 0.4);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--dark);
-            border: 2px solid var(--primary);
-        }
-        
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--dark);
-            position: relative;
-            font-family: 'Georgia', serif;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-        
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text);
-            font-family: 'Georgia', serif;
-        }
-        
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .stat-card {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            color: var(--dark);
-            transition: transform 0.3s;
-            border: 3px solid var(--primary);
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px) rotate(-2deg);
-        }
-        
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(255, 154, 158, 0.2);
-            transition: all 0.3s;
-            border: 3px solid var(--secondary);
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.3);
-        }
-        
-        .skill-category h3 {
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            font-family: 'Georgia', serif;
-        }
-        
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-        
-        .skill-tag {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-family: 'Georgia', serif;
-        }
-        
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-        
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 3px;
-            background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
-        }
-        
-        .experience-item {
-            position: relative;
-            margin-bottom: 3rem;
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(255, 154, 158, 0.2);
-            border: 3px solid var(--secondary);
-        }
-        
-        .experience-item::before {
-            content: '🌸';
-            position: absolute;
-            left: -3.8rem;
-            top: 2rem;
-            font-size: 1.5rem;
-        }
-        
-        .experience-item h3 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-            font-family: 'Georgia', serif;
-        }
-        
-        .experience-date {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-            font-family: 'Georgia', serif;
-        }
-        
-        .experience-item ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .experience-item li {
-            padding: 0.5rem 0;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .experience-item li::before {
-            content: '🦋';
-            position: absolute;
-            left: 0;
-            font-size: 0.8rem;
-        }
-        
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(255, 154, 158, 0.2);
-            transition: all 0.3s;
-            border: 3px solid var(--secondary);
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 154, 158, 0.3);
-        }
-        
-        .project-header {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 2rem;
-            color: var(--dark);
-        }
-        
-        .project-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .project-content {
-            padding: 2rem;
-        }
-        
-        .project-content h3 {
-            color: var(--dark);
-            margin-bottom: 1rem;
-            font-family: 'Georgia', serif;
-        }
-        
-        .project-content p {
-            color: var(--text);
-            line-height: 1.6;
-            font-family: 'Georgia', serif;
-        }
-        
-        /* Contact Section */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        
-        .contact-info {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            padding: 3rem;
-            border-radius: 20px;
-            color: var(--dark);
-            border: 3px solid var(--primary);
-        }
-        
-        .contact-info h3 {
-            font-family: 'Georgia', serif;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            font-size: 1.5rem;
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(255, 154, 158, 0.2);
-            border: 3px solid var(--secondary);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-            font-weight: 600;
-            font-family: 'Georgia', serif;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid var(--secondary);
-            border-radius: 15px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            font-family: 'Georgia', serif;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-        
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-            color: var(--dark);
-            text-align: center;
-            padding: 2rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            color: var(--dark);
-            font-size: 1.5rem;
-            transition: transform 0.3s;
-            text-decoration: none;
-        }
-        
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .name-display {
-                font-size: 2.5rem;
-            }
-            
-            .hero .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-            }
-            
-            .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-            
-            .projects-grid,
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pragna Sree Koripuri — AI/ML Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose: #ff9a9e;
+      --peach: #fcb69f;
+      --blush: #fad0c4;
+      --lilac: #fbc2eb;
+      --cream: #fff8f5;
+      --dark: #2d1f1a;
+      --mid: #5a3e36;
+      --text: #4a3228;
+      --card: #ffffff;
+      --shadow: rgba(255,154,158,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(255,248,245,0.92); backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid #ffd6d6;
+      padding: 0.9rem 0;
+    }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--rose); text-decoration: none; letter-spacing: 0.5px; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--mid); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--rose); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fff0f0 0%, #ffecd2 40%, #fcb69f 80%, #ff9a9e 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
+    }
+    .hero-blob {
+      position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35; pointer-events: none;
+    }
+    .blob1 { width: 500px; height: 500px; background: #ffb3b3; top: -100px; left: -100px; }
+    .blob2 { width: 400px; height: 400px; background: #fbc2eb; bottom: -80px; right: -80px; }
+    .hero-card {
+      position: relative; z-index: 1; max-width: 720px;
+      background: rgba(255,255,255,0.72); backdrop-filter: blur(16px);
+      border-radius: 28px; padding: 3.5rem 3rem;
+      box-shadow: 0 24px 64px rgba(255,120,120,0.2), 0 0 0 1.5px rgba(255,154,158,0.3);
+      animation: riseUp 0.9s cubic-bezier(.22,.68,0,.99) both;
+    }
+    @keyframes riseUp { from { opacity:0; transform: translateY(40px); } to { opacity:1; transform: translateY(0); } }
+    .hero-tag { display: inline-block; background: linear-gradient(90deg,#ff9a9e,#fbc2eb); color: white; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.2rem; }
+    .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; color: var(--dark); line-height: 1.1; margin-bottom: 1rem; }
+    .hero-name span { background: linear-gradient(135deg,#ff9a9e,#fcb69f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .hero-sub { font-size: 1.05rem; color: var(--mid); margin-bottom: 2rem; line-height: 1.6; font-weight: 300; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn { padding: 0.75rem 1.8rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; display: inline-block; font-family: 'DM Sans', sans-serif; }
+    .btn-primary { background: linear-gradient(135deg, #ff9a9e, #fcb69f); color: white; box-shadow: 0 6px 20px rgba(255,154,158,0.4); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(255,154,158,0.5); }
+    .btn-outline { background: transparent; color: var(--mid); border: 1.5px solid #ffb3b3; }
+    .btn-outline:hover { background: #fff0f0; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+    .sec-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem; }
+    .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--dark); margin-bottom: 3rem; }
+    .sec-title::after { content: ''; display: block; width: 56px; height: 3px; background: linear-gradient(90deg,#ff9a9e,#fbc2eb); border-radius: 2px; margin-top: 0.6rem; }
+
+    /* ── ABOUT ── */
+    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
+    .about-text p { font-size: 1rem; line-height: 1.85; color: var(--text); margin-bottom: 1rem; font-weight: 300; }
+    .about-text strong { color: var(--dark); font-weight: 600; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .stat { background: white; border: 1.5px solid #ffd6d6; border-radius: 18px; padding: 1.5rem 1rem; text-align: center; transition: transform 0.25s, box-shadow 0.25s; }
+    .stat:hover { transform: translateY(-4px); box-shadow: 0 12px 28px var(--shadow); }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--rose); }
+    .stat-lbl { font-size: 0.8rem; color: var(--mid); margin-top: 2px; }
+
+    /* ── SKILLS ── */
+    .skills-bg { background: linear-gradient(135deg,#fff4f4,#ffecd2); padding: 5rem 2rem; }
+    .skills-inner { max-width: 1100px; margin: 0 auto; }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .skill-card { background: white; border-radius: 18px; padding: 1.5rem; border: 1.5px solid #ffd6d6; transition: transform 0.25s, box-shadow 0.25s; }
+    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px var(--shadow); }
+    .skill-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--mid); margin-bottom: 1rem; letter-spacing: 0.04em; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: linear-gradient(135deg,#ff9a9e,#fad0c4); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
+    .tag.new { background: linear-gradient(135deg,#fbc2eb,#fcb69f); }
+
+    /* ── EXPERIENCE ── */
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before { content:''; position:absolute; left:0; top:0; width:2px; height:100%; background: linear-gradient(180deg,#ff9a9e,#fbc2eb); border-radius:2px; }
+    .t-item { position:relative; margin-bottom:2.5rem; background:white; padding:1.8rem; border-radius:18px; border:1.5px solid #ffd6d6; box-shadow:0 4px 16px var(--shadow); }
+    .t-item::before { content:''; position:absolute; left:-2.8rem; top:1.8rem; width:12px; height:12px; background: linear-gradient(135deg,#ff9a9e,#fbc2eb); border-radius:50%; border:2px solid white; }
+    .t-role { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:2px; }
+    .t-org { font-size:0.85rem; font-weight:500; color:var(--rose); margin-bottom:0.8rem; }
+    .t-item ul { list-style:none; padding:0; }
+    .t-item li { font-size:0.9rem; color:var(--text); padding:0.3rem 0 0.3rem 1.2rem; position:relative; line-height:1.6; font-weight:300; }
+    .t-item li::before { content:'→'; position:absolute; left:0; color:var(--rose); font-size:0.8rem; }
+
+    /* ── PROJECTS ── */
+    .projects-bg { background: linear-gradient(135deg,#fff4f4,#ffecd2); padding: 5rem 2rem; }
+    .projects-inner { max-width: 1100px; margin: 0 auto; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
+    .proj-card { background: white; border-radius: 20px; overflow: hidden; border: 1.5px solid #ffd6d6; transition: transform 0.25s, box-shadow 0.25s; }
+    .proj-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px var(--shadow); }
+    .proj-top { padding: 1.5rem 1.5rem 1rem; background: linear-gradient(135deg,#fff0f0,#ffecd2); }
+    .proj-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .proj-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--dark); margin-bottom:0.25rem; }
+    .proj-stack { font-size:0.75rem; color:var(--rose); font-weight:500; letter-spacing:0.04em; }
+    .proj-body { padding: 1.2rem 1.5rem 1.5rem; }
+    .proj-body p { font-size:0.875rem; color:var(--text); line-height:1.7; font-weight:300; margin-bottom:1rem; }
+    .proj-link { font-size:0.8rem; font-weight:600; color:var(--rose); text-decoration:none; letter-spacing:0.03em; }
+    .proj-link:hover { text-decoration: underline; }
+    .new-badge { display:inline-block; background:linear-gradient(90deg,#ff9a9e,#fbc2eb); color:white; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:2px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; }
+
+    /* ── CONTACT ── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    .contact-info { background: linear-gradient(135deg,#fff0f0,#ffecd2); border-radius:20px; padding:2rem; border:1.5px solid #ffd6d6; }
+    .contact-info h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--dark); margin-bottom:1.5rem; }
+    .c-item { display:flex; align-items:center; gap:0.9rem; margin-bottom:1.1rem; font-size:0.9rem; color:var(--text); }
+    .c-icon { font-size:1.2rem; flex-shrink:0; }
+    .contact-form { background:white; border-radius:20px; padding:2rem; border:1.5px solid #ffd6d6; box-shadow:0 4px 16px var(--shadow); }
+    .form-row { margin-bottom:1.2rem; }
+    .form-row label { display:block; font-size:0.8rem; font-weight:600; color:var(--mid); margin-bottom:5px; letter-spacing:0.04em; }
+    .form-row input, .form-row textarea { width:100%; padding:0.7rem 1rem; border:1.5px solid #ffd6d6; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:#fffafa; outline:none; transition:border-color 0.2s; }
+    .form-row input:focus, .form-row textarea:focus { border-color:var(--rose); }
+    .form-row textarea { resize:vertical; min-height:110px; }
+
+    /* ── FOOTER ── */
+    footer { background:linear-gradient(135deg,#ff9a9e,#fad0c4); padding:2rem; text-align:center; color:var(--dark); }
+    footer p { font-size:0.875rem; margin-bottom:1rem; font-weight:300; }
+    .socials { display:flex; justify-content:center; gap:1.5rem; }
+    .socials a { color:var(--dark); font-size:0.875rem; font-weight:600; text-decoration:none; transition:opacity 0.2s; }
+    .socials a:hover { opacity:0.7; }
+
+    @media(max-width:768px) {
+      .about-grid, .contact-grid { grid-template-columns:1fr; }
+      .nav-links { gap:1rem; font-size:0.8rem; }
+      .hero-card { padding:2.5rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#home" class="logo">Pragna Sree</a>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1 class="name-display">Pragna Sree Koripuri</h1>
-            <p class="subtitle">AI/ML Engineer • Game Developer • CS Graduate Student</p>
-            <div class="cta-buttons">
-                <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                <a href="https://www.linkedin.com/in/pragna-sree-koripuri-b156a225b" target="_blank" class="btn btn-secondary">LinkedIn</a>
-            </div>
-        </div>
-    </section>
+<nav>
+  <div class="nav-inner">
+    <a href="#home" class="logo">Pragna Sree</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Hello! I'm Pragna Sree, a passionate Computer Science graduate student at The University of Texas at Dallas, specializing in Intelligent Systems. With a strong foundation in AI and Machine Learning from CMR Engineering College, I'm driven by the intersection of technology and creativity.</p>
-                <br>
-                <p>Currently exploring game development with my first release, Word Sandwich, while diving deep into machine learning applications. I love building solutions that combine technical excellence with engaging user experiences.</p>
-            </div>
-            <div class="about-stats">
-                <div class="stat-card">
-                    <div class="stat-number">3.33</div>
-                    <div>GPA at UTD</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">9.03</div>
-                    <div>GPA CMR</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">1+</div>
-                    <div>Games Published</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3+</div>
-                    <div>ML Projects</div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-blob blob1"></div>
+  <div class="hero-blob blob2"></div>
+  <div class="hero-card">
+    <div class="hero-tag">AI / ML Engineer</div>
+    <h1 class="hero-name">Pragna Sree <span>Koripuri</span></h1>
+    <p class="hero-sub">CS Graduate Student at UT Dallas · Building intelligent systems that solve real problems · From NLP pipelines to AI-powered web apps</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">Get In Touch</a>
+      <a href="https://github.com/pragna09" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://www.linkedin.com/in/pragna-sree-koripuri/" target="_blank" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2 class="section-title">Skills & Technologies</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>💻 Programming Languages</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Java</span>
-                    <span class="skill-tag">C/C++</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">HTML/CSS</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>🤖 AI & Machine Learning</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Machine Learning</span>
-                    <span class="skill-tag">NLP</span>
-                    <span class="skill-tag">NLTK</span>
-                    <span class="skill-tag">scikit-learn</span>
-                    <span class="skill-tag">DBSCAN</span>
-                </div>
-            </div>
-            <div class="skill-category">
-                <h3>🛠️ Tools & Frameworks</h3>
-                <div class="skill-tags">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">MongoDB</span>
-                    <span class="skill-tag">Postman</span>
-                    <span class="skill-tag">Arduino</span>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="sec-label">Who I am</div>
+  <div class="sec-title">About Me</div>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I'm a <strong>Computer Science graduate student at UT Dallas</strong>, specializing in Intelligent Systems. With a strong AI & ML foundation from CMR Engineering College (GPA 9.03), I build things at the intersection of machine learning, NLP, and full-stack development.</p>
+      <p>I've shipped real AI-powered web apps using <strong>LLMs, vision models, and Flask</strong> — from a catfish detector that analyzes profile screenshots to a legal clause risk scorer. I love turning complex AI research into tools people can actually use.</p>
+      <p>Outside of ML, I run <strong>VTrix Games</strong> and published my first mobile word game on the Play Store — because I believe great engineers build things that delight people.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat"><div class="stat-num">3.33</div><div class="stat-lbl">GPA at UTD</div></div>
+      <div class="stat"><div class="stat-num">9.03</div><div class="stat-lbl">GPA at CMR</div></div>
+      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">AI Projects</div></div>
+      <div class="stat"><div class="stat-num">1+</div><div class="stat-lbl">Games Published</div></div>
+    </div>
+  </div>
+</div>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <h2 class="section-title">Experience</h2>
-        <div class="experience-timeline">
-            <div class="experience-item">
-                <h3>AI/ML Intern</h3>
-                <div class="experience-date">Infosys Springboard | Summer 2024</div>
-                <ul>
-                    <li>Developed an AI-Driven B2B Lead Scoring and Account-Based Marketing Optimization System</li>
-                    <li>Implemented machine learning algorithms to analyze customer data and predict high-value leads</li>
-                    <li>Designed and deployed automated workflows for account-based marketing strategies using Python</li>
-                </ul>
-            </div>
-            
-            <div class="experience-item">
-                <h3>Class Representative</h3>
-                <div class="experience-date">CMR Engineering College | 2021 - 2025</div>
-                <ul>
-                    <li>Served as primary liaison between faculty and 60+ students</li>
-                    <li>Coordinated campus activities, significantly increasing student participation and engagement</li>
-                </ul>
-            </div>
+<!-- SKILLS -->
+<div class="skills-bg" id="skills">
+  <div class="skills-inner">
+    <div class="sec-label">What I work with</div>
+    <div class="sec-title">Skills & Technologies</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>💻 Languages</h4>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">C/C++</span>
+          <span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span>
         </div>
-    </section>
+      </div>
+      <div class="skill-card">
+        <h4>🤖 AI & Machine Learning</h4>
+        <div class="tags">
+          <span class="tag">Machine Learning</span><span class="tag">NLP</span>
+          <span class="tag">Prompt Engineering</span><span class="tag new">LLM APIs</span>
+          <span class="tag">scikit-learn</span><span class="tag">NLTK</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>🛠️ Frameworks & Tools</h4>
+        <div class="tags">
+          <span class="tag new">Flask</span><span class="tag">Git</span>
+          <span class="tag">MongoDB</span><span class="tag new">Streamlit</span>
+          <span class="tag">Postman</span><span class="tag">Arduino</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>📦 Libraries & Data</h4>
+        <div class="tags">
+          <span class="tag new">Pandas</span><span class="tag new">NumPy</span>
+          <span class="tag new">Plotly</span><span class="tag">Matplotlib</span>
+          <span class="tag new">REST APIs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon">🥪</div>
-                    <h3>Word Sandwich</h3>
-                </div>
-                <div class="project-content">
-                    <p>A mobile word puzzle game that challenges vocabulary and quick thinking skills. Published on Play Store through VTrix Games studio.</p>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon">⚖️</div>
-                    <h3>Legal Document Analysis System</h3>
-                </div>
-                <div class="project-content">
-                    <p>Engineered a comparative analysis system using NLP to analyze judgments from High Courts and Supreme Courts. Applied natural language processing techniques using NLTK and scikit-learn.</p>
-                </div>
-            </div>
-            
-            <div class="project-card">
-                <div class="project-header">
-                    <div class="project-icon">📊</div>
-                    <h3>Customer Segmentation using DBSCAN</h3>
-                </div>
-                <div class="project-content">
-                    <p>Implemented density-based clustering algorithm to segment mall customers based on purchasing behavior. Conducted comparative analysis of distance metrics and published findings.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- EXPERIENCE -->
+<div class="section" id="experience">
+  <div class="sec-label">Where I've worked</div>
+  <div class="sec-title">Experience</div>
+  <div class="timeline">
+    <div class="t-item">
+      <div class="t-role">AI/ML Intern</div>
+      <div class="t-org">Infosys Springboard · Remote · Summer 2024</div>
+      <ul>
+        <li>Built an AI-driven B2B Lead Scoring and Account-Based Marketing Optimization System to enhance marketing efficiency and targeting accuracy</li>
+        <li>Implemented ML algorithms to analyze customer data and predict high-value leads, improving conversion rates through behavioral signal analysis</li>
+        <li>Designed and deployed automated marketing workflows using Python, Pandas, and scikit-learn</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Contact Information</h3>
-                <div class="contact-item">
-                    <span class="contact-icon">📍</span>
-                    <div>Allen, Texas, USA</div>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-icon">📞</span>
-                    <div>903-505-0620</div>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-icon">✉️</span>
-                    <div>koripuripragnasree@gmail.com</div>
-                </div>
-                <div class="contact-item">
-                    <span class="contact-icon">🎮</span>
-                    <div>vtrixgames1@gmail.com</div>
-                </div>
-            </div>
-            
-            <div class="contact-form">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                </form>
-            </div>
-        </div>
-    </section>
+<!-- PROJECTS -->
+<div class="projects-bg" id="projects">
+  <div class="projects-inner">
+    <div class="sec-label">What I've built</div>
+    <div class="sec-title">Featured Projects</div>
+    <div class="projects-grid">
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Pragna Sree Koripuri. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/pragna-sree-koripuri-b156a225b" target="_blank">💼 LinkedIn</a>
-            <a href="https://github.com/pragna09" target="_blank">💻 GitHub</a>
-            <a href="https://vtrixgames.github.io" target="_blank">🎮 VTrix Games</a>
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon">🎣</div>
+          <div class="proj-name">Catfish Detector <span class="new-badge">New</span></div>
+          <div class="proj-stack">Flask · Llama 4 Scout · Vision AI · Groq API · Python</div>
         </div>
-    </footer>
+        <div class="proj-body">
+          <p>AI-powered web app that analyzes social media and dating app profile screenshots for multi-signal inconsistency detection. Detects location mismatches, nationality vs language conflicts, suspicious activity timing, and more using a vision LLM.</p>
+          <a href="https://github.com/pragna09/catfish-detector" target="_blank" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon">🎭</div>
+          <div class="proj-name">Personality Analyzer <span class="new-badge">New</span></div>
+          <div class="proj-stack">Flask · Groq API · LLaMA 3.1 · Prompt Engineering · Python</div>
+        </div>
+        <div class="proj-body">
+          <p>Full-stack web app that analyzes any text input and returns a Big Five (OCEAN) personality breakdown with trait scores, key insights, and career recommendations. Powered by structured LLM prompt engineering.</p>
+          <a href="https://github.com/pragna09/personality-analyzer" target="_blank" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon">⚖️</div>
+          <div class="proj-name">Legal Clause Risk Scorer <span class="new-badge">New</span></div>
+          <div class="proj-stack">Flask · Groq API · NLP · Python · HTML/CSS/JS</div>
+        </div>
+        <div class="proj-body">
+          <p>NLP-powered app that parses contract text, classifies clauses as high/medium/low risk, and generates an overall risk score with dynamic color-coded clause cards and animated risk indicators.</p>
+          <a href="https://github.com/pragna09/legal-risk-scorer" target="_blank" class="proj-link">View on GitHub →</a>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon">📜</div>
+          <div class="proj-name">Legal Document Analysis System</div>
+          <div class="proj-stack">Python · NLTK · scikit-learn · NLP</div>
+        </div>
+        <div class="proj-body">
+          <p>Comparative NLP system that analyzes High Court and Supreme Court judgments, extracting key reasoning patterns and factors influencing judicial decisions across 500+ documents using TF-IDF and clustering.</p>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-top">
+          <div class="proj-icon">🥪</div>
+          <div class="proj-name">Word Sandwich</div>
+          <div class="proj-stack">Game Development · VTrix Games · Play Store</div>
+        </div>
+        <div class="proj-body">
+          <p>Mobile word puzzle game published on the Google Play Store through VTrix Games studio. Challenges vocabulary and quick thinking skills with an engaging game loop.</p>
+          <a href="https://vtrixgames.github.io" target="_blank" class="proj-link">Visit VTrix Games →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="section" id="contact">
+  <div class="sec-label">Let's talk</div>
+  <div class="sec-title">Get In Touch</div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h3>Contact Information</h3>
+      <div class="c-item"><span class="c-icon">📍</span><span>Allen, Texas, USA</span></div>
+      <div class="c-item"><span class="c-icon">📞</span><span>903-505-0620</span></div>
+      <div class="c-item"><span class="c-icon">✉️</span><span>koripuripragnasree@gmail.com</span></div>
+      <div class="c-item"><span class="c-icon">💼</span><span><a href="https://www.linkedin.com/in/pragna-sree-koripuri/" style="color:var(--rose);text-decoration:none;" target="_blank">linkedin.com/in/pragna-sree-koripuri</a></span></div>
+      <div class="c-item"><span class="c-icon">💻</span><span><a href="https://github.com/pragna09" style="color:var(--rose);text-decoration:none;" target="_blank">github.com/pragna09</a></span></div>
+      <div class="c-item"><span class="c-icon">🎮</span><span>vtrixgames1@gmail.com</span></div>
+    </div>
+    <div class="contact-form">
+      <div class="form-row"><label>Name</label><input type="text" placeholder="Your name"></div>
+      <div class="form-row"><label>Email</label><input type="email" placeholder="your@email.com"></div>
+      <div class="form-row"><label>Message</label><textarea placeholder="What would you like to talk about?"></textarea></div>
+      <a href="mailto:koripuripragnasree@gmail.com" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Send Message</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2025 Pragna Sree Koripuri · AI/ML Engineer · UT Dallas</p>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/pragna-sree-koripuri/" target="_blank">💼 LinkedIn</a>
+    <a href="https://github.com/pragna09" target="_blank">💻 GitHub</a>
+    <a href="https://vtrixgames.github.io" target="_blank">🎮 VTrix Games</a>
+  </div>
+</footer>
+
 </body>
 </html>
