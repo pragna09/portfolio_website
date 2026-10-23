@@ -26,21 +26,6 @@
     })();
   }
 
-  // Hero risk meter count-up
-  var ring = document.querySelector('.ring');
-  var num = ring.querySelector('b');
-  var target = +num.dataset.count;
-  if (reduce) { ring.style.setProperty('--p', target); num.textContent = target; }
-  else {
-    var start = null;
-    requestAnimationFrame(function step(t) {
-      start = start || t;
-      var k = Math.min((t - start) / 1400, 1), v = Math.round(target * (1 - Math.pow(1 - k, 3)));
-      ring.style.setProperty('--p', v); num.textContent = v;
-      if (k < 1) requestAnimationFrame(step);
-    });
-  }
-
   // Project filters
   var chips = document.querySelectorAll('.chip');
   var cards = document.querySelectorAll('.proj');
