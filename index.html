@@ -1,361 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pragna Sree Koripuri — AI/ML Engineer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --rose: #ff9a9e;
-      --peach: #fcb69f;
-      --blush: #fad0c4;
-      --lilac: #fbc2eb;
-      --cream: #fff8f5;
-      --dark: #2d1f1a;
-      --mid: #5a3e36;
-      --text: #4a3228;
-      --card: #ffffff;
-      --shadow: rgba(255,154,158,0.18);
-    }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(255,248,245,0.92); backdrop-filter: blur(14px);
-      border-bottom: 1.5px solid #ffd6d6;
-      padding: 0.9rem 0;
-    }
-    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--rose); text-decoration: none; letter-spacing: 0.5px; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { font-size: 0.875rem; font-weight: 500; color: var(--mid); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--rose); }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      background: linear-gradient(145deg, #fff0f0 0%, #ffecd2 40%, #fcb69f 80%, #ff9a9e 100%);
-      display: flex; align-items: center; justify-content: center;
-      padding: 7rem 2rem 4rem; text-align: center; position: relative; overflow: hidden;
-    }
-    .hero-blob {
-      position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.35; pointer-events: none;
-    }
-    .blob1 { width: 500px; height: 500px; background: #ffb3b3; top: -100px; left: -100px; }
-    .blob2 { width: 400px; height: 400px; background: #fbc2eb; bottom: -80px; right: -80px; }
-    .hero-card {
-      position: relative; z-index: 1; max-width: 720px;
-      background: rgba(255,255,255,0.72); backdrop-filter: blur(16px);
-      border-radius: 28px; padding: 3.5rem 3rem;
-      box-shadow: 0 24px 64px rgba(255,120,120,0.2), 0 0 0 1.5px rgba(255,154,158,0.3);
-      animation: riseUp 0.9s cubic-bezier(.22,.68,0,.99) both;
-    }
-    @keyframes riseUp { from { opacity:0; transform: translateY(40px); } to { opacity:1; transform: translateY(0); } }
-    .hero-tag { display: inline-block; background: linear-gradient(90deg,#ff9a9e,#fbc2eb); color: white; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 14px; border-radius: 20px; margin-bottom: 1.2rem; }
-    .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 900; color: var(--dark); line-height: 1.1; margin-bottom: 1rem; }
-    .hero-name span { background: linear-gradient(135deg,#ff9a9e,#fcb69f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero-sub { font-size: 1.05rem; color: var(--mid); margin-bottom: 2rem; line-height: 1.6; font-weight: 300; }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn { padding: 0.75rem 1.8rem; border-radius: 50px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: all 0.25s; border: none; cursor: pointer; display: inline-block; font-family: 'DM Sans', sans-serif; }
-    .btn-primary { background: linear-gradient(135deg, #ff9a9e, #fcb69f); color: white; box-shadow: 0 6px 20px rgba(255,154,158,0.4); }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(255,154,158,0.5); }
-    .btn-outline { background: transparent; color: var(--mid); border: 1.5px solid #ffb3b3; }
-    .btn-outline:hover { background: #fff0f0; }
-
-    /* ── SECTIONS ── */
-    .section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
-    .sec-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.5rem; }
-    .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--dark); margin-bottom: 3rem; }
-    .sec-title::after { content: ''; display: block; width: 56px; height: 3px; background: linear-gradient(90deg,#ff9a9e,#fbc2eb); border-radius: 2px; margin-top: 0.6rem; }
-
-    /* ── ABOUT ── */
-    .about-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 3rem; align-items: center; }
-    .about-text p { font-size: 1rem; line-height: 1.85; color: var(--text); margin-bottom: 1rem; font-weight: 300; }
-    .about-text strong { color: var(--dark); font-weight: 600; }
-    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .stat { background: white; border: 1.5px solid #ffd6d6; border-radius: 18px; padding: 1.5rem 1rem; text-align: center; transition: transform 0.25s, box-shadow 0.25s; }
-    .stat:hover { transform: translateY(-4px); box-shadow: 0 12px 28px var(--shadow); }
-    .stat-num { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 900; color: var(--rose); }
-    .stat-lbl { font-size: 0.8rem; color: var(--mid); margin-top: 2px; }
-
-    /* ── SKILLS ── */
-    .skills-bg { background: linear-gradient(135deg,#fff4f4,#ffecd2); padding: 5rem 2rem; }
-    .skills-inner { max-width: 1100px; margin: 0 auto; }
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
-    .skill-card { background: white; border-radius: 18px; padding: 1.5rem; border: 1.5px solid #ffd6d6; transition: transform 0.25s, box-shadow 0.25s; }
-    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px var(--shadow); }
-    .skill-card h4 { font-size: 0.85rem; font-weight: 600; color: var(--mid); margin-bottom: 1rem; letter-spacing: 0.04em; }
-    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
-    .tag { background: linear-gradient(135deg,#ff9a9e,#fad0c4); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 500; }
-    .tag.new { background: linear-gradient(135deg,#fbc2eb,#fcb69f); }
-
-    /* ── EXPERIENCE ── */
-    .timeline { position: relative; padding-left: 2.5rem; }
-    .timeline::before { content:''; position:absolute; left:0; top:0; width:2px; height:100%; background: linear-gradient(180deg,#ff9a9e,#fbc2eb); border-radius:2px; }
-    .t-item { position:relative; margin-bottom:2.5rem; background:white; padding:1.8rem; border-radius:18px; border:1.5px solid #ffd6d6; box-shadow:0 4px 16px var(--shadow); }
-    .t-item::before { content:''; position:absolute; left:-2.8rem; top:1.8rem; width:12px; height:12px; background: linear-gradient(135deg,#ff9a9e,#fbc2eb); border-radius:50%; border:2px solid white; }
-    .t-role { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; color:var(--dark); margin-bottom:2px; }
-    .t-org { font-size:0.85rem; font-weight:500; color:var(--rose); margin-bottom:0.8rem; }
-    .t-item ul { list-style:none; padding:0; }
-    .t-item li { font-size:0.9rem; color:var(--text); padding:0.3rem 0 0.3rem 1.2rem; position:relative; line-height:1.6; font-weight:300; }
-    .t-item li::before { content:'→'; position:absolute; left:0; color:var(--rose); font-size:0.8rem; }
-
-    /* ── PROJECTS ── */
-    .projects-bg { background: linear-gradient(135deg,#fff4f4,#ffecd2); padding: 5rem 2rem; }
-    .projects-inner { max-width: 1100px; margin: 0 auto; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; }
-    .proj-card { background: white; border-radius: 20px; overflow: hidden; border: 1.5px solid #ffd6d6; transition: transform 0.25s, box-shadow 0.25s; }
-    .proj-card:hover { transform: translateY(-8px); box-shadow: 0 20px 48px var(--shadow); }
-    .proj-top { padding: 1.5rem 1.5rem 1rem; background: linear-gradient(135deg,#fff0f0,#ffecd2); }
-    .proj-icon { font-size: 2.2rem; margin-bottom: 0.5rem; }
-    .proj-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; color:var(--dark); margin-bottom:0.25rem; }
-    .proj-stack { font-size:0.75rem; color:var(--rose); font-weight:500; letter-spacing:0.04em; }
-    .proj-body { padding: 1.2rem 1.5rem 1.5rem; }
-    .proj-body p { font-size:0.875rem; color:var(--text); line-height:1.7; font-weight:300; margin-bottom:1rem; }
-    .proj-link { font-size:0.8rem; font-weight:600; color:var(--rose); text-decoration:none; letter-spacing:0.03em; }
-    .proj-link:hover { text-decoration: underline; }
-    .new-badge { display:inline-block; background:linear-gradient(90deg,#ff9a9e,#fbc2eb); color:white; font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; padding:2px 8px; border-radius:10px; margin-left:8px; vertical-align:middle; }
-
-    /* ── CONTACT ── */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
-    .contact-info { background: linear-gradient(135deg,#fff0f0,#ffecd2); border-radius:20px; padding:2rem; border:1.5px solid #ffd6d6; }
-    .contact-info h3 { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--dark); margin-bottom:1.5rem; }
-    .c-item { display:flex; align-items:center; gap:0.9rem; margin-bottom:1.1rem; font-size:0.9rem; color:var(--text); }
-    .c-icon { font-size:1.2rem; flex-shrink:0; }
-    .contact-form { background:white; border-radius:20px; padding:2rem; border:1.5px solid #ffd6d6; box-shadow:0 4px 16px var(--shadow); }
-    .form-row { margin-bottom:1.2rem; }
-    .form-row label { display:block; font-size:0.8rem; font-weight:600; color:var(--mid); margin-bottom:5px; letter-spacing:0.04em; }
-    .form-row input, .form-row textarea { width:100%; padding:0.7rem 1rem; border:1.5px solid #ffd6d6; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.9rem; color:var(--text); background:#fffafa; outline:none; transition:border-color 0.2s; }
-    .form-row input:focus, .form-row textarea:focus { border-color:var(--rose); }
-    .form-row textarea { resize:vertical; min-height:110px; }
-
-    /* ── FOOTER ── */
-    footer { background:linear-gradient(135deg,#ff9a9e,#fad0c4); padding:2rem; text-align:center; color:var(--dark); }
-    footer p { font-size:0.875rem; margin-bottom:1rem; font-weight:300; }
-    .socials { display:flex; justify-content:center; gap:1.5rem; }
-    .socials a { color:var(--dark); font-size:0.875rem; font-weight:600; text-decoration:none; transition:opacity 0.2s; }
-    .socials a:hover { opacity:0.7; }
-
-    @media(max-width:768px) {
-      .about-grid, .contact-grid { grid-template-columns:1fr; }
-      .nav-links { gap:1rem; font-size:0.8rem; }
-      .hero-card { padding:2.5rem 1.5rem; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pragna Sree Koripuri — AI/ML Engineer</title>
+<meta name="description" content="AI/ML engineer and CS graduate student at UT Dallas building LLM apps and NLP systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>try{var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
 </head>
 <body>
 
-<nav>
-  <div class="nav-inner">
+<header class="nav">
+  <div class="wrap nav-in">
     <a href="#home" class="logo">Pragna Sree</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <nav aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button id="theme" class="icon-btn" aria-label="Toggle dark mode"><span aria-hidden="true">◐</span></button>
   </div>
-</nav>
+</header>
 
-<!-- HERO -->
+<main>
 <section id="home" class="hero">
-  <div class="hero-blob blob1"></div>
-  <div class="hero-blob blob2"></div>
-  <div class="hero-card">
-    <div class="hero-tag">AI / ML Engineer</div>
-    <h1 class="hero-name">Pragna Sree <span>Koripuri</span></h1>
-    <p class="hero-sub">CS Graduate Student at UT Dallas · Building intelligent systems that solve real problems · From NLP pipelines to AI-powered web apps</p>
-    <div class="hero-btns">
-      <a href="#contact" class="btn btn-primary">Get In Touch</a>
-      <a href="https://github.com/pragna09" target="_blank" class="btn btn-outline">GitHub</a>
-      <a href="https://www.linkedin.com/in/pragna-sree-koripuri/" target="_blank" class="btn btn-outline">LinkedIn</a>
+  <div class="aurora" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <p class="hello">Hi, I'm</p>
+      <h1>Pragna Sree<br>Koripuri</h1>
+      <p class="roll">I build <span id="typed" aria-live="polite"></span><span class="caret" aria-hidden="true"></span></p>
+      <p class="lead">CS graduate student at UT Dallas and a member of the HeXD Lab, focused on intelligent systems. I turn ML research into web apps people can actually use.</p>
+      <div class="btns">
+        <a href="#projects" class="btn primary">See my projects</a>
+        <a href="#contact" class="btn ghost">Get in touch</a>
+      </div>
+    </div>
+
+    <aside class="demo" aria-label="Sample clause risk analysis">
+      <div class="demo-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="demo-title">risk-scorer</span></div>
+      <div class="meter" style="--v:72"><div class="ring"><b data-count="72">0</b></div><div><strong>Overall risk</strong><small>Contract analysis</small></div></div>
+      <ul class="clauses">
+        <li class="hi"><i></i>Unlimited liability clause<em>High</em></li>
+        <li class="md"><i></i>Auto-renewal terms<em>Medium</em></li>
+        <li class="lo"><i></i>Governing law<em>Low</em></li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section id="about" class="wrap block">
+  <h2>About me</h2>
+  <div class="about">
+    <div class="prose">
+      <p>I'm a <strong>Computer Science graduate student at UT Dallas</strong> specializing in Intelligent Systems. My foundation in AI &amp; ML comes from CMR Engineering College, where I graduated with a 9.03 GPA.</p>
+      <p>I've shipped AI-powered web apps using <strong>LLMs, vision models and Flask</strong>: a catfish detector that reads profile screenshots, a personality analyzer, and a legal clause risk scorer.</p>
+      <p>I'm also a <strong>member of the HeXD Lab at UT Dallas</strong>. I like the part of ML where a model meets a real person, so most of my work ends with a working interface.</p>
+    </div>
+    <dl class="stats">
+      <div><dt>3.33</dt><dd>GPA at UT Dallas</dd></div>
+      <div><dt>9.03</dt><dd>GPA at CMR</dd></div>
+      <div><dt>4</dt><dd>Featured AI projects</dd></div>
+      <div><dt>500+</dt><dd>Court judgments analyzed</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section id="skills" class="band">
+  <div class="wrap block">
+    <h2>Skills &amp; technologies</h2>
+    <div class="skills">
+      <div class="card"><h3>Languages</h3><p class="tags"><span>Python</span><span>Java</span><span>C/C++</span><span>SQL</span><span>JavaScript</span><span>HTML/CSS</span></p></div>
+      <div class="card"><h3>AI &amp; machine learning</h3><p class="tags"><span>Machine Learning</span><span>NLP</span><span>Prompt Engineering</span><span>LLM APIs</span><span>scikit-learn</span><span>NLTK</span></p></div>
+      <div class="card"><h3>Frameworks &amp; tools</h3><p class="tags"><span>Flask</span><span>Streamlit</span><span>Git</span><span>MongoDB</span><span>Postman</span><span>Arduino</span></p></div>
+      <div class="card"><h3>Libraries &amp; data</h3><p class="tags"><span>Pandas</span><span>NumPy</span><span>Plotly</span><span>Matplotlib</span><span>REST APIs</span></p></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<div class="section" id="about">
-  <div class="sec-label">Who I am</div>
-  <div class="sec-title">About Me</div>
-  <div class="about-grid">
-    <div class="about-text">
-      <p>I'm a <strong>Computer Science graduate student at UT Dallas</strong>, specializing in Intelligent Systems. With a strong AI & ML foundation from CMR Engineering College (GPA 9.03), I build things at the intersection of machine learning, NLP, and full-stack development.</p>
-      <p>I've shipped real AI-powered web apps using <strong>LLMs, vision models, and Flask</strong> — from a catfish detector that analyzes profile screenshots to a legal clause risk scorer. I love turning complex AI research into tools people can actually use.</p>
-      <p>Outside of ML, I develop <strong>VTrix Games</strong> and I am going to publish my first mobile word game on the Play Store — because I believe great engineers build things that delight people.</p>
-    </div>
-    <div class="stats-grid">
-      <div class="stat"><div class="stat-num">3.33</div><div class="stat-lbl">GPA at UTD</div></div>
-      <div class="stat"><div class="stat-num">9.03</div><div class="stat-lbl">GPA at CMR</div></div>
-      <div class="stat"><div class="stat-num">5+</div><div class="stat-lbl">AI Projects</div></div>
-      <div class="stat"><div class="stat-num">1+</div><div class="stat-lbl">Games Published</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- SKILLS -->
-<div class="skills-bg" id="skills">
-  <div class="skills-inner">
-    <div class="sec-label">What I work with</div>
-    <div class="sec-title">Skills & Technologies</div>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h4>💻 Languages</h4>
-        <div class="tags">
-          <span class="tag">Python</span><span class="tag">Java</span><span class="tag">C/C++</span>
-          <span class="tag">SQL</span><span class="tag">JavaScript</span><span class="tag">HTML/CSS</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h4>🤖 AI & Machine Learning</h4>
-        <div class="tags">
-          <span class="tag">Machine Learning</span><span class="tag">NLP</span>
-          <span class="tag">Prompt Engineering</span><span class="tag new">LLM APIs</span>
-          <span class="tag">scikit-learn</span><span class="tag">NLTK</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h4>🛠️ Frameworks & Tools</h4>
-        <div class="tags">
-          <span class="tag new">Flask</span><span class="tag">Git</span>
-          <span class="tag">MongoDB</span><span class="tag new">Streamlit</span>
-          <span class="tag">Postman</span><span class="tag">Arduino</span>
-        </div>
-      </div>
-      <div class="skill-card">
-        <h4>📦 Libraries & Data</h4>
-        <div class="tags">
-          <span class="tag new">Pandas</span><span class="tag new">NumPy</span>
-          <span class="tag new">Plotly</span><span class="tag">Matplotlib</span>
-          <span class="tag new">REST APIs</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- EXPERIENCE -->
-<div class="section" id="experience">
-  <div class="sec-label">Where I've worked</div>
-  <div class="sec-title">Experience</div>
-  <div class="timeline">
-    <div class="t-item">
-      <div class="t-role">AI/ML Intern</div>
-      <div class="t-org">Infosys Springboard · Remote · Summer 2024</div>
+<section id="experience" class="wrap block">
+  <h2>Experience</h2>
+  <ol class="timeline">
+    <li>
+      <h3>Member</h3>
+      <p class="org">HeXD Lab · The University of Texas at Dallas</p>
+    </li>
+    <li>
+      <h3>AI/ML Intern</h3>
+      <p class="org">Infosys Springboard · Remote · Summer 2024</p>
       <ul>
-        <li>Built an AI-driven B2B Lead Scoring and Account-Based Marketing Optimization System to enhance marketing efficiency and targeting accuracy</li>
-        <li>Implemented ML algorithms to analyze customer data and predict high-value leads, improving conversion rates through behavioral signal analysis</li>
-        <li>Designed and deployed automated marketing workflows using Python, Pandas, and scikit-learn</li>
+        <li>Built an AI-driven B2B lead scoring and account-based marketing system to improve targeting accuracy.</li>
+        <li>Trained ML models on customer data to predict high-value leads, using behavioral signals to lift conversion.</li>
+        <li>Designed and deployed automated marketing workflows with Python, Pandas and scikit-learn.</li>
+      </ul>
+    </li>
+  </ol>
+</section>
+
+<section id="projects" class="band">
+  <div class="wrap block">
+    <h2>Featured projects</h2>
+    <div class="filters" role="group" aria-label="Filter projects">
+      <button class="chip on" data-f="all">All</button>
+      <button class="chip" data-f="llm">LLM apps</button>
+      <button class="chip" data-f="nlp">NLP</button>
+    </div>
+    <div class="projects">
+      <article class="proj" data-c="llm">
+        <div class="ico">🎣</div>
+        <h3>Catfish Detector <span class="badge">New</span></h3>
+        <p class="stack">Flask · Llama 4 Scout · Groq API</p>
+        <p>Analyzes social and dating profile screenshots with a vision LLM, flagging location mismatches, nationality-language conflicts and suspicious activity timing.</p>
+        <a href="https://github.com/pragna09/catfish-detector" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="proj" data-c="llm">
+        <div class="ico">🎭</div>
+        <h3>Personality Analyzer <span class="badge">New</span></h3>
+        <p class="stack">Flask · Groq API · LLaMA 3.1</p>
+        <p>Takes any text and returns a Big Five (OCEAN) breakdown with trait scores, key insights and career suggestions, driven by structured prompt engineering.</p>
+        <a href="https://github.com/pragna09/personality-analyzer" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="proj" data-c="llm nlp">
+        <div class="ico">⚖️</div>
+        <h3>Legal Clause Risk Scorer <span class="badge">New</span></h3>
+        <p class="stack">Flask · Groq API · NLP · JavaScript</p>
+        <p>Parses contract text, classifies each clause as high, medium or low risk, and shows an overall score with color-coded clause cards and animated indicators.</p>
+        <a href="https://github.com/pragna09/legal-risk-scorer" target="_blank" rel="noopener">View on GitHub →</a>
+      </article>
+      <article class="proj" data-c="nlp">
+        <div class="ico">📜</div>
+        <h3>Legal Document Analysis</h3>
+        <p class="stack">Python · NLTK · scikit-learn</p>
+        <p>Compares High Court and Supreme Court judgments across 500+ documents, using TF-IDF and clustering to surface reasoning patterns behind judicial decisions.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="wrap block">
+  <h2>Get in touch</h2>
+  <div class="contact">
+    <div class="card info">
+      <h3>Contact information</h3>
+      <ul>
+        <li>📍 Allen, Texas, USA</li>
+        <li>📞 <a href="tel:+19035050620">903-505-0620</a></li>
+        <li>✉️ <a href="mailto:koripuripragnasree@gmail.com">koripuripragnasree@gmail.com</a></li>
+        <li>💼 <a href="https://www.linkedin.com/in/pragna-sree-koripuri/" target="_blank" rel="noopener">linkedin.com/in/pragna-sree-koripuri</a></li>
+        <li>💻 <a href="https://github.com/pragna09" target="_blank" rel="noopener">github.com/pragna09</a></li>
       </ul>
     </div>
+    <form class="card" id="form">
+      <label>Name<input name="name" type="text" placeholder="Your name" required></label>
+      <label>Email<input name="email" type="email" placeholder="you@email.com" required></label>
+      <label>Message<textarea name="msg" placeholder="What would you like to talk about?" required></textarea></label>
+      <button class="btn primary" type="submit">Send message</button>
+    </form>
   </div>
-</div>
-
-<!-- PROJECTS -->
-<div class="projects-bg" id="projects">
-  <div class="projects-inner">
-    <div class="sec-label">What I've built</div>
-    <div class="sec-title">Featured Projects</div>
-    <div class="projects-grid">
-
-      <div class="proj-card">
-        <div class="proj-top">
-          <div class="proj-icon">🎣</div>
-          <div class="proj-name">Catfish Detector <span class="new-badge">New</span></div>
-          <div class="proj-stack">Flask · Llama 4 Scout · Vision AI · Groq API · Python</div>
-        </div>
-        <div class="proj-body">
-          <p>AI-powered web app that analyzes social media and dating app profile screenshots for multi-signal inconsistency detection. Detects location mismatches, nationality vs language conflicts, suspicious activity timing, and more using a vision LLM.</p>
-          <a href="https://github.com/pragna09/catfish-detector" target="_blank" class="proj-link">View on GitHub →</a>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-top">
-          <div class="proj-icon">🎭</div>
-          <div class="proj-name">Personality Analyzer <span class="new-badge">New</span></div>
-          <div class="proj-stack">Flask · Groq API · LLaMA 3.1 · Prompt Engineering · Python</div>
-        </div>
-        <div class="proj-body">
-          <p>Full-stack web app that analyzes any text input and returns a Big Five (OCEAN) personality breakdown with trait scores, key insights, and career recommendations. Powered by structured LLM prompt engineering.</p>
-          <a href="https://github.com/pragna09/personality-analyzer" target="_blank" class="proj-link">View on GitHub →</a>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-top">
-          <div class="proj-icon">⚖️</div>
-          <div class="proj-name">Legal Clause Risk Scorer <span class="new-badge">New</span></div>
-          <div class="proj-stack">Flask · Groq API · NLP · Python · HTML/CSS/JS</div>
-        </div>
-        <div class="proj-body">
-          <p>NLP-powered app that parses contract text, classifies clauses as high/medium/low risk, and generates an overall risk score with dynamic color-coded clause cards and animated risk indicators.</p>
-          <a href="https://github.com/pragna09/legal-risk-scorer" target="_blank" class="proj-link">View on GitHub →</a>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-top">
-          <div class="proj-icon">📜</div>
-          <div class="proj-name">Legal Document Analysis System</div>
-          <div class="proj-stack">Python · NLTK · scikit-learn · NLP</div>
-        </div>
-        <div class="proj-body">
-          <p>Comparative NLP system that analyzes High Court and Supreme Court judgments, extracting key reasoning patterns and factors influencing judicial decisions across 500+ documents using TF-IDF and clustering.</p>
-        </div>
-      </div>
-
-      <div class="proj-card">
-        <div class="proj-top">
-          <div class="proj-icon">🥪</div>
-          <div class="proj-name">Word Sandwich</div>
-          <div class="proj-stack">Game Development · VTrix Games · Play Store</div>
-        </div>
-        <div class="proj-body">
-          <p>Mobile word puzzle game published on the Google Play Store through VTrix Games studio. Challenges vocabulary and quick thinking skills with an engaging game loop.</p>
-          <a href="https://vtrixgames.github.io" target="_blank" class="proj-link">Visit VTrix Games →</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<div class="section" id="contact">
-  <div class="sec-label">Let's talk</div>
-  <div class="sec-title">Get In Touch</div>
-  <div class="contact-grid">
-    <div class="contact-info">
-      <h3>Contact Information</h3>
-      <div class="c-item"><span class="c-icon">📍</span><span>Allen, Texas, USA</span></div>
-      <div class="c-item"><span class="c-icon">📞</span><span>903-505-0620</span></div>
-      <div class="c-item"><span class="c-icon">✉️</span><span>koripuripragnasree@gmail.com</span></div>
-      <div class="c-item"><span class="c-icon">💼</span><span><a href="https://www.linkedin.com/in/pragna-sree-koripuri/" style="color:var(--rose);text-decoration:none;" target="_blank">linkedin.com/in/pragna-sree-koripuri</a></span></div>
-      <div class="c-item"><span class="c-icon">💻</span><span><a href="https://github.com/pragna09" style="color:var(--rose);text-decoration:none;" target="_blank">github.com/pragna09</a></span></div>
-      <div class="c-item"><span class="c-icon">🎮</span><span>vtrixgames1@gmail.com</span></div>
-    </div>
-    <div class="contact-form">
-      <div class="form-row"><label>Name</label><input type="text" placeholder="Your name"></div>
-      <div class="form-row"><label>Email</label><input type="email" placeholder="your@email.com"></div>
-      <div class="form-row"><label>Message</label><textarea placeholder="What would you like to talk about?"></textarea></div>
-      <a href="mailto:koripuripragnasree@gmail.com" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Send Message</a>
-    </div>
-  </div>
-</div>
+</section>
+</main>
 
 <footer>
-  <p>© 2025 Pragna Sree Koripuri · AI/ML Engineer · UT Dallas</p>
-  <div class="socials">
-    <a href="https://www.linkedin.com/in/pragna-sree-koripuri/" target="_blank">💼 LinkedIn</a>
-    <a href="https://github.com/pragna09" target="_blank">💻 GitHub</a>
-    <a href="https://vtrixgames.github.io" target="_blank">🎮 VTrix Games</a>
+  <div class="wrap foot">
+    <p>© <span id="yr">2026</span> Pragna Sree Koripuri</p>
+    <p><a href="https://www.linkedin.com/in/pragna-sree-koripuri/" target="_blank" rel="noopener">LinkedIn</a> <a href="https://github.com/pragna09" target="_blank" rel="noopener">GitHub</a></p>
   </div>
 </footer>
 
+<script src="script.js"></script>
 </body>
 </html>
